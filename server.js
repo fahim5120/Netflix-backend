@@ -6,10 +6,12 @@ const User = require("./models/user.model");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const app = express();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
